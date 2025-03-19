@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>eSewa Payment</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center mb-4">eSewa Payment Form</h1>
+      <form
+        action="https://epay.esewa.com.np/api/epay/main/v2/form"
+        method="POST"
+      >
+        <div class="mb-3">
+          <label>Amount:</label>
+          <input
+            type="text"
+            name="amount"
+            class="form-control"
+            value="<%= amount %>"
+            required
+            readonly
+          />
+        </div>
+
+        <div class="mb-3">
+          <label>Tax Amount:</label>
+          <input
+            type="text"
+            name="tax_amount"
+            class="form-control"
+            value="0"
+            required
+            readonly
+          />
+        </div>
+
+        <div class="mb-3">
+          <label>Total Amount:</label>
+          <input
+            type="text"
+            name="total_amount"
+            class="form-control"
+            value="<%= amount %>"
+            required
+            readonly
+          />
+        </div>
+
+        <div class="mb-3">
+          <label>Transaction UUID:</label>
+          <input
+            type="text"
+            name="transaction_uuid"
+            class="form-control"
+            value="<%= transaction_uuid %>"
+            required
+            readonly
+          />
+        </div>
+
+        <div class="mb-3">
+          <label>Product Code:</label>
+          <input
+            type="text"
+            name="product_code"
+            class="form-control"
+            value="<%= product_code %>"
+            required
+            readonly
+          />
+        </div>
+
+        <div class="mb-3">
+          <label>Signature:</label>
+          <input
+            type="text"
+            name="signature"
+            class="form-control"
+            value="<%= signature %>"
+            required
+            readonly
+          />
+        </div>
+
+        <input type="hidden" name="product_service_charge" value="0" />
+        <input type="hidden" name="product_delivery_charge" value="0" />
+        <input type="hidden" name="success_url" value="<%= success_url %>" />
+        <input type="hidden" name="failure_url" value="<%= failure_url %>" />
+        <input
+          type="hidden"
+          name="signed_field_names"
+          value="total_amount,transaction_uuid,product_code"
+        />
+
+        <button type="submit" class="btn btn-primary">Pay with eSewa</button>
+      </form>
+    </div>
+  </body>
+</html>
